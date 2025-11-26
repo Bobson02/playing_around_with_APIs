@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-chart-line"></i> Personal Finance Tracker</h1>
+            <p>Track your investments, monitor exchange rates, and stay updated with financial news</p>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" onclick="showSection('portfolio')">
+                <i class="fas fa-briefcase"></i> Portfolio
+            </button>
+            <button class="nav-btn" onclick="showSection('exchange')">
+                <i class="fas fa-exchange-alt"></i> Exchange Rates
+            </button>
+            <button class="nav-btn" onclick="showSection('news')">
+                <i class="fas fa-newspaper"></i> Financial News
+            </button>
+            <div class="nav-actions">
+                <button class="nav-btn secondary" onclick="showPerformanceStats()" title="Performance Dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Stats
+                </button>
+                <button class="nav-btn logout-btn" onclick="logoutAndReset()" title="Clear configuration and reset application">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </nav>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section active">
+            <div class="section-header">
+                <h2>Investment Portfolio</h2>
+                <div class="add-stock">
+                    <input type="text" id="stockSymbol" placeholder="Enter stock symbol (e.g., AAPL)" maxlength="10">
+                    <button onclick="addStock()"><i class="fas fa-plus"></i> Add Stock</button>
+                </div>
+            </div>
+            
+            <div id="portfolioStats" class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Value</h3>
+                    <span id="totalValue">$0.00</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Today's Change</h3>
+                    <span id="totalChange">$0.00</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Stocks Tracked</h3>
+                    <span id="stockCount">0</span>
+                </div>
+            </div>
+
+            <div class="search-filter">
+                <input type="text" id="stockFilter" placeholder="Search stocks..." onkeyup="filterStocks()">
+                <select id="sortOptions" onchange="sortStocks()">
+                    <option value="symbol">Sort by Symbol</option>
+                    <option value="price">Sort by Price</option>
+                    <option value="change">Sort by Change</option>
+                </select>
+            </div>
+
+            <div id="stockList" class="stock-grid"></div>
+        </section>
+
+        <!-- Exchange Rates Section -->
+        <section id="exchange" class="section">
+            <div class="section-header">
+                <h2>Currency Exchange Rates</h2>
+                <div class="currency-converter">
+                    <input type="number" id="amount" placeholder="Amount" value="1">
+                    <select id="fromCurrency">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="CAD">CAD</option>
+                        <option value="AUD">AUD</option>
+                    </select>
+                    <span>to</span>
+                    <select id="toCurrency">
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="CAD">CAD</option>
+                        <option value="AUD">AUD</option>
+                    </select>
+                    <button onclick="convertCurrency()">Convert</button>
+                </div>
+            </div>
+            
+            <div id="conversionResult" class="conversion-result"></div>
+            <div id="exchangeRates" class="rates-grid"></div>
+        </section>
+
+        <!-- Financial News Section -->
+        <section id="news" class="section">
+            <div class="section-header">
+                <h2>Financial News</h2>
+                <div class="news-filters">
+                    <select id="newsCategory" onchange="loadNews()">
+                        <option value="general">General</option>
+                        <option value="business">Business</option>
+                        <option value="technology">Technology</option>
+                        <option value="markets">Markets</option>
+                    </select>
+                    <button onclick="loadNews()"><i class="fas fa-refresh"></i> Refresh</button>
+                </div>
+            </div>
+            
+            <div id="newsList" class="news-grid"></div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Personal Finance Tracker | Data provided by Alpha Vantage, ExchangeRate-API, and NewsAPI</p>
+            <p><small>Enhanced with advanced caching, security, and performance monitoring</small></p>
+        </footer>
+    </div>
+
+    <!-- Security and Performance Indicators -->
+    <div class="security-indicator" title="Application secured against XSS and injection attacks">
+        Secured
+    </div>
+    
+    <div class="cache-indicator" onclick="showPerformanceStats()" title="Click to view performance stats (Ctrl+Shift+P)">
+        Cache Active
+    </div>
+
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <div id="errorMessage" class="error-message"></div>
+
+    <script src="config-loader.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore environment variables and sensitive data
+.env
+.env.local
+.env.production
+config.json
+secrets.json
+
+# Ignore API keys file (if separate)
+api-keys.js
+api-config.js
+
+# Keep example files (safe to commit)
+!.env.example
+!api-config.template.js
+
+# Keep security test file (no sensitive data)
+!security-test.html
+
+# Ignore backup files
+*.backup
+*.bak
+
+# Ignore compressed files
+*.zip
+*.tar.gz
+*.rar
+
+# Ignore deployment files
+deploy/
+dist/
+build/
+
+# Ignore cache files
+cache/
+.cache/
+
+# Ignore node modules (if using any build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore package lock files
+package-lock.json
+yarn.lock
