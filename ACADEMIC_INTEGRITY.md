@@ -1,8 +1,7 @@
 # Academic Integrity Declaration
 
-**Course**: ALU Course Assignment 3  
-**Assignment**: Personal Finance Tracker with External API Integration  
-**Student**: [Your Name]  
+**Course**: Web_Infrastructure Assignment Playing Around with APIs  
+**Author**: Bonheur MURENZI  
 **Date**: November 25, 2025  
 
 ## Declaration of Original Work
